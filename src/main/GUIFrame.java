@@ -80,6 +80,7 @@ public class GUIFrame {
 
         btnStop = new JButton("Stop");
         btnStop.setBounds(169, 71, 75, 23);
+        btnStop.setEnabled(false);
         pnlSound.add(btnStop);
 
         lblPlaying = new JLabel("Now Playing...", JLabel.CENTER);
@@ -109,6 +110,7 @@ public class GUIFrame {
         btnDStop = new JButton("Stop");
         btnDStop.setBounds(135, 226, 75, 23);
         pnlDisplay.add(btnDStop);
+        btnDStop.setEnabled(false);
 
         pnlMove = new JPanel();
         pnlMove.setBounds(10, 19, 200, 200);
@@ -137,6 +139,7 @@ public class GUIFrame {
 
         btnTStop = new JButton("Stop");
         btnTStop.setBounds(135, 226, 75, 23);
+        btnTStop.setEnabled(false);
         pnlTriangle.add(btnTStop);
 
         pnlRotate = new JPanel();
@@ -237,21 +240,33 @@ public class GUIFrame {
             } else if (e.getSource() == btnPlay) {
                 System.out.println("Play Music");
                 controller.playMusicPlayer();
+                btnPlay.setEnabled(false);
+                btnStop.setEnabled(true);
             } else if (e.getSource() == btnStop) {
                 System.out.println("Stop Music");
                 controller.stopMusicPlayer();
+                btnPlay.setEnabled(true);
+                btnStop.setEnabled(false);
             }else if(e.getSource() == btnDisplay){
                 System.out.println("Start Text");
                 controller.startTextJumping();
+                btnDisplay.setEnabled(false);
+                btnDStop.setEnabled(true);
             }else if(e.getSource() == btnDStop){
                 System.out.println("Stop Text");
                 controller.stopTextJumping();
+                btnDisplay.setEnabled(true);
+                btnDStop.setEnabled(false);
             }else if(e.getSource() == btnTriangle){
                 System.out.println("Start Triangle");
                 controller.startPicRot();
+                btnTriangle.setEnabled(false);
+                btnTStop.setEnabled(true);
             }else if(e.getSource() == btnTStop){
                 System.out.println("Stop Triangle");
                 controller.stopPicRot();
+                btnTriangle.setEnabled(true);
+                btnTStop.setEnabled(false);
             }
         }
     }
